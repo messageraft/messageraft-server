@@ -26,6 +26,8 @@ async function bootstrap() {
 
   await app.listen(3000);
 
-  logger.log(`Application listening on port ${3000}`);
+  logger.log(
+    `Application available at ${process.env.DOMAIN}:${process.env.PORT}`,
+  );
 }
 bootstrap();
