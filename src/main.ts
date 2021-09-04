@@ -35,7 +35,19 @@ async function bootstrap() {
     customSiteTitle: 'Messageraft API Documentation',
   });
 
-  app.getHttpAdapter().getInstance().register(helmet);
+  app
+    .getHttpAdapter()
+    .getInstance()
+    .register(helmet, {
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: [`'self'`],
+          styleSrc: [`'self'`, `'unsafe-inline'`],
+          imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
+          scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
+        },
+      },
+    });
 
   await app.listen(3000);
 
