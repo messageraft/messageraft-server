@@ -7,7 +7,7 @@ import { providerErrorHandler } from './providerErrorHandler';
 
 @Injectable()
 export class MessageRaftService {
-  private messageRaft: Core;
+  messageRaft: Core;
 
   constructor(private readonly configService: ConfigService) {
     this.messageRaft = new Core({
