@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Core } from '@messageraft/core';
 import { ProviderName, ProviderType } from '@messageraft/common';
 import { SendDto } from './dto/Send.dto';
-import { sendgridErrorHandler } from '@messageraft/sendgrid';
 import { ConfigService } from '@nestjs/config';
+import { providerErrorHandler } from './providerErrorHandler';
 
 @Injectable()
 export class MessageRaftService {
@@ -28,7 +28,7 @@ export class MessageRaftService {
     try {
       return await this.messageRaft.send(sendDto.data, sendDto.provider);
     } catch (error) {
-      return sendgridErrorHandler(error);
+      return providerErrorHandler(error, sendDto.provider);
     }
   }
 }

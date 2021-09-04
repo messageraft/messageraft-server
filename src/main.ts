@@ -6,6 +6,8 @@ import {
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
+import * as helmet from 'fastify-helmet';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const logger = new Logger('Main');
@@ -23,6 +25,17 @@ async function bootstrap() {
       },
     }),
   );
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('Messageraft API Documentation')
+    .setVersion('0.0.1')
+    .build();
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('api', app, document, {
+    customSiteTitle: 'Messageraft API Documentation',
+  });
+
+  app.getHttpAdapter().getInstance().register(helmet);
 
   await app.listen(3000);
 
