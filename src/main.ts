@@ -4,7 +4,11 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import {
+  BadRequestException,
+  ValidationError,
+  ValidationPipe,
+} from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 import * as helmet from 'fastify-helmet';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -22,6 +26,11 @@ async function bootstrap() {
       transform: true,
       transformOptions: {
         enableImplicitConversion: true,
+      },
+      exceptionFactory: (validationErrors: ValidationError[] = []) => {
+        console.log(validationErrors);
+        console.log('NEED TO FIX THIS');
+        return new BadRequestException(validationErrors);
       },
     }),
   );

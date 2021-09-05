@@ -1,6 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Core } from '@messageraft/core';
-import { ProviderName, ProviderType } from '@messageraft/common';
+import {
+  ProviderName,
+  ProviderType,
+  SendgridConstructorOptions,
+  TwilioConstructorOptions,
+} from '@messageraft/common';
 import { SendDto } from './dto/Send.dto';
 import { ConfigService } from '@nestjs/config';
 import { providerErrorHandler } from './providerErrorHandler';
@@ -16,9 +21,17 @@ export class MessageRaftService {
         {
           name: ProviderName.SENDGRID,
           type: ProviderType.EMAIL,
-          options: {
-            apiKey: this.configService.get<string>('credentials.sendgrid'),
-          },
+          options: this.configService.get<SendgridConstructorOptions>(
+            'credentials.sendgrid',
+          ),
+        },
+        {
+          name: ProviderName.TWILIO,
+          type: ProviderType.SMS,
+          options:
+            this.configService.get<TwilioConstructorOptions>(
+              'credentials.twilio',
+            ),
         },
       ],
     });

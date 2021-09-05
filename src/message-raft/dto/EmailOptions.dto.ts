@@ -1,7 +1,7 @@
 import { ValidateIf } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class EmailOptions {
+export class EmailOptionsDto {
   @ApiProperty()
   to: string;
 

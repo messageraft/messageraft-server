@@ -3,9 +3,10 @@ import { MessageRaftService } from './message-raft.service';
 import { SendDto } from './dto/Send.dto';
 import * as clc from 'cli-color';
 import { ApiExtraModels, ApiTags } from '@nestjs/swagger';
-import { EmailOptions } from './dto/EmailOptions.dto';
+import { EmailOptionsDto } from './dto/EmailOptions.dto';
+import { SmsOptionsDto } from './dto/SmsOptions.dto';
 
-@ApiExtraModels(EmailOptions)
+@ApiExtraModels(EmailOptionsDto, SmsOptionsDto)
 @Controller('message')
 export class MessageRaftController {
   private logger = new Logger(MessageRaftController.name);
