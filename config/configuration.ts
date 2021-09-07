@@ -11,5 +11,9 @@ export const configuration = () => ({
       authToken: process.env.TWILIO_AUTH_TOKEN,
       from: process.env.TWILIO_PHONE_NUMBER,
     },
+    slack: {
+      token: process.env.SLACK_TOKEN,
+      channel: process.env.SLACK_CHANNEL,
+    },
   },
 });

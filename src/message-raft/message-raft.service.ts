@@ -4,6 +4,7 @@ import {
   ProviderName,
   ProviderType,
   SendgridConstructorOptions,
+  SlackConstructorOptions,
   TwilioConstructorOptions,
 } from '@messageraft/common';
 import { SendDto } from './dto/Send.dto';
@@ -31,6 +32,14 @@ export class MessageRaftService {
           options:
             this.configService.get<TwilioConstructorOptions>(
               'credentials.twilio',
+            ),
+        },
+        {
+          name: ProviderName.SLACK,
+          type: ProviderType.DIRECT_MESSAGE,
+          options:
+            this.configService.get<SlackConstructorOptions>(
+              'credentials.slack',
             ),
         },
       ],

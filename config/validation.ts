@@ -7,4 +7,6 @@ export const validationSchema = Joi.object({
   TWILIO_ACCOUNT_SID: Joi.string(),
   TWILIO_AUTH_TOKEN: Joi.string(),
   TWILIO_PHONE_NUMBER: Joi.string(),
+  SLACK_TOKEN: Joi.string(),
+  SLACK_CHANNEL: Joi.string(),
 });
