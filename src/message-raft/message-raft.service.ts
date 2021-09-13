@@ -46,11 +46,11 @@ export class MessageRaftService {
     });
   }
 
-  async send(sendDto: SendDto) {
+  async send(sendDto: SendDto, provider: ProviderName) {
     try {
-      return await this.messageRaft.send(sendDto.data, sendDto.provider);
+      return await this.messageRaft.send(sendDto.data, provider);
     } catch (error) {
-      return providerErrorHandler(error, sendDto.provider);
+      return providerErrorHandler(error, provider);
     }
   }
 }
