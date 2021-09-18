@@ -10,6 +10,7 @@ import {
 import { SendDto } from './dto/Send.dto';
 import { ConfigService } from '@nestjs/config';
 import { providerErrorHandler } from './providerErrorHandler';
+import { buildProvidersConfig } from './buildProvidersConfig';
 
 @Injectable()
 export class MessageRaftService {
@@ -18,31 +19,7 @@ export class MessageRaftService {
   constructor(private readonly configService: ConfigService) {
     this.messageRaft = new Core({
       logger: Logger,
-      providers: [
-        {
-          name: ProviderName.SENDGRID,
-          type: ProviderType.EMAIL,
-          options: this.configService.get<SendgridConstructorOptions>(
-            'credentials.sendgrid',
-          ),
-        },
-        {
-          name: ProviderName.TWILIO,
-          type: ProviderType.SMS,
-          options:
-            this.configService.get<TwilioConstructorOptions>(
-              'credentials.twilio',
-            ),
-        },
-        {
-          name: ProviderName.SLACK,
-          type: ProviderType.DIRECT_MESSAGE,
-          options:
-            this.configService.get<SlackConstructorOptions>(
-              'credentials.slack',
-            ),
-        },
-      ],
+      providers: buildProvidersConfig(this.configService),
     });
   }
 
