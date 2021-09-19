@@ -10,10 +10,12 @@ export const configuration = () => {
       twilio: {
         accountSid: process.env.TWILIO_ACCOUNT_SID,
         authToken: process.env.TWILIO_AUTH_TOKEN,
+        // OPTIONAL - Alternatively can provide during request
         from: process.env.TWILIO_PHONE_NUMBER,
       },
       slack: {
         token: process.env.SLACK_TOKEN,
+        // OPTIONAL - Alternatively can provide during request
         channel: process.env.SLACK_CHANNEL,
       },
     },
