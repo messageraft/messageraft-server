@@ -58,15 +58,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+[comment]: <> (## Support)
+[comment]: <> (Messageraft is an APACHE 2.0-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here]&#40;https://messageraft.com/support&#41;.)
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Petros](https://twitter.com/9pitops)
+- Website - [https://messageraft.com](https://messageraft.com/)
+- Twitter - [@messageraft](https://twitter.com/messageraft_com)
 
 
 ## 📝 License
