@@ -3,6 +3,14 @@ import { AppService } from './app.service';
 import { MessageRaftService } from './message-raft/message-raft.service';
 import * as packageJson from 'package.json';
 
+interface HealthResponse {
+  version: string;
+  providers: {
+    identified: string[];
+    numberOfProviders: number;
+  };
+}
+
 @Controller()
 export class AppController {
   constructor(
@@ -10,10 +18,8 @@ export class AppController {
     private readonly messageRaftService: MessageRaftService,
   ) {}
 
-  // TODO create a HEALTH check endpoint
-
   @Get('health')
-  health() {
+  health(): HealthResponse {
     const providers = this.messageRaftService.messageRaft.providers.map(
       (provider) => provider.name,
     );
