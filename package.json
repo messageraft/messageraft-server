@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@messageraft/common": "^0.0.3",
-    "@messageraft/core": "0.0.1",
+    "@messageraft/core": "0.0.3",
     "@nestjs/common": "8.0.1",
     "@nestjs/config": "^1.0.1",
     "@nestjs/core": "8.0.1",
