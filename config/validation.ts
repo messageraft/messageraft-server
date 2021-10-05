@@ -9,4 +9,5 @@ export const validationSchema = Joi.object({
   TWILIO_PHONE_NUMBER: Joi.string(),
   SLACK_TOKEN: Joi.string(),
   SLACK_CHANNEL: Joi.string(),
+  MAILDEV_PORT: Joi.string(),
 });

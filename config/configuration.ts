@@ -18,6 +18,9 @@ export const configuration = () => {
         // OPTIONAL - Alternatively can provide during request
         channel: process.env.SLACK_CHANNEL,
       },
+      maildev: {
+        port: parseInt(process.env.MAILDEV_PORT),
+      },
     },
   };
 };
